@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Download</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📥</div>
+        <h1>Your Download is Ready!</h1>
+        <p>Your file download should start automatically. If it doesn't, click the button below.</p>
+        <button class="download-btn" onclick="downloadFile()">Download Now</button>
+    </div>
+
+    <script>
+        function downloadFile() {
+            // Option 1: Download from a URL
+            const fileUrl = 'https://example.com/your-file.pdf'; // Replace with your file URL
+            
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            link.download = 'a.mp3'; // Replace with desired filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Automatically trigger download when page loads
+        window.onload = function() {
+            // Wait 1 second before auto-downloading (for better UX)
+            setTimeout(downloadFile, 1000);
+        };
+    </script>
+</body>
+</html>
